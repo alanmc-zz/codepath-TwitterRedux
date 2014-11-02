@@ -24,6 +24,11 @@
 		235D5B841A06311100F7A698 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235D5B821A06311100F7A698 /* FeedTableViewCell.m */; };
 		235D5B851A06311100F7A698 /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B831A06311100F7A698 /* FeedTableViewCell.xib */; };
 		235D5B871A069D8800F7A698 /* About_logoUsage.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B861A069D8800F7A698 /* About_logoUsage.png */; };
+		235D5B8D1A06B8CA00F7A698 /* retweet_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B881A06B8CA00F7A698 /* retweet_on.png */; };
+		235D5B8E1A06B8CA00F7A698 /* retweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B891A06B8CA00F7A698 /* retweet.png */; };
+		235D5B8F1A06B8CA00F7A698 /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B8A1A06B8CA00F7A698 /* reply.png */; };
+		235D5B901A06B8CA00F7A698 /* favorite_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B8B1A06B8CA00F7A698 /* favorite_on.png */; };
+		235D5B911A06B8CA00F7A698 /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B8C1A06B8CA00F7A698 /* favorite.png */; };
 		3D953C663927A3947E18997B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4011426B2ABDAA272437B208 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +74,11 @@
 		235D5B821A06311100F7A698 /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 		235D5B831A06311100F7A698 /* FeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
 		235D5B861A069D8800F7A698 /* About_logoUsage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About_logoUsage.png; sourceTree = "<group>"; };
+		235D5B881A06B8CA00F7A698 /* retweet_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retweet_on.png; sourceTree = "<group>"; };
+		235D5B891A06B8CA00F7A698 /* retweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retweet.png; sourceTree = "<group>"; };
+		235D5B8A1A06B8CA00F7A698 /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
+		235D5B8B1A06B8CA00F7A698 /* favorite_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_on.png; sourceTree = "<group>"; };
+		235D5B8C1A06B8CA00F7A698 /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		4011426B2ABDAA272437B208 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,6 +132,11 @@
 		235264331A05B69A0093099A /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				235D5B881A06B8CA00F7A698 /* retweet_on.png */,
+				235D5B891A06B8CA00F7A698 /* retweet.png */,
+				235D5B8A1A06B8CA00F7A698 /* reply.png */,
+				235D5B8B1A06B8CA00F7A698 /* favorite_on.png */,
+				235D5B8C1A06B8CA00F7A698 /* favorite.png */,
 				235D5B801A0630E100F7A698 /* TableViewCells */,
 				235D5B6B1A05BBFF00F7A698 /* TwitterClient */,
 				235D5B651A05BA7600F7A698 /* ViewControllers */,
@@ -300,10 +315,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				235264451A05B69A0093099A /* LaunchScreen.xib in Resources */,
+				235D5B8E1A06B8CA00F7A698 /* retweet.png in Resources */,
 				235264421A05B69A0093099A /* Images.xcassets in Resources */,
+				235D5B901A06B8CA00F7A698 /* favorite_on.png in Resources */,
 				235D5B7A1A0626AA00F7A698 /* FeedViewController.xib in Resources */,
 				235D5B851A06311100F7A698 /* FeedTableViewCell.xib in Resources */,
 				235D5B871A069D8800F7A698 /* About_logoUsage.png in Resources */,
+				235D5B911A06B8CA00F7A698 /* favorite.png in Resources */,
+				235D5B8F1A06B8CA00F7A698 /* reply.png in Resources */,
+				235D5B8D1A06B8CA00F7A698 /* retweet_on.png in Resources */,
 				235D5B6A1A05BA9300F7A698 /* LoginViewController.xib in Resources */,
 				235D5B7F1A062E8E00F7A698 /* CreateTweetViewController.xib in Resources */,
 			);

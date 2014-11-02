@@ -13,10 +13,14 @@
 @interface Tweet : NSObject
 
 @property (nonatomic, strong) NSString *text;
+
 @property (nonatomic, strong) NSDate* createdAt;
+
 @property (nonatomic, strong) User* createdBy;
 @property (nonatomic, strong) User* retweetedBy;
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
+
++ (NSArray *)tweetsWithArray:(NSArray *)array;
 
 @end

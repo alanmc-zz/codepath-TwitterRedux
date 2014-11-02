@@ -7,6 +7,7 @@
 //
 
 #import "TwitterClient.h"
+#import "Tweet.h"
 
 @interface TwitterClient()
 
@@ -51,6 +52,19 @@ NSString * const kBaseURL = @"https://api.twitter.com/";
         self.loginCompletion(nil, error);
     }];
 
+}
+
+- (void)homeTimelineWithCompletion:(void (^)(NSArray* tweets, NSError *error))completion {
+    if ([User currentUser] == nil) {
+        completion(nil, [[NSError alloc] initWithDomain:@"twitter" code:404 userInfo:nil]);
+    }
+    
+    [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
 }
 
 - (void)openURL:(NSURL *)url {

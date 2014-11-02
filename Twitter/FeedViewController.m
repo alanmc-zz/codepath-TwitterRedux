@@ -10,16 +10,28 @@
 #import "CreateTweetViewController.h"
 #import "FeedTableViewCell.h"
 #import "User.h"
+#import "TwitterClient.h"
 
 @interface FeedViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) FeedTableViewCell *prototypeCell;
-@property (weak, atomic) NSArray* tweets;
+@property (strong, atomic) FeedTableViewCell *currentCell;
+@property (strong, atomic) NSArray* tweets;
 
 @end
 
 @implementation FeedViewController
+
+- (void)loadTweets {
+    [[TwitterClient sharedInstance] homeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", error);
+        } else {
+            self.tweets = tweets;
+            [self.tableView reloadData];
+        }
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,23 +61,22 @@
                                                                     target:self
                                                                     action:@selector(onNewTweet)];
     self.navigationItem.rightBarButtonItem = createTweetButton;
+    
+    [self loadTweets];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.tweets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (_prototypeCell == nil) {
-        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];
-    }
-    _prototypeCell.tweet = self.tweets[indexPath.row];
-    return _prototypeCell;
+    _currentCell = [self.tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];
+    return _currentCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.prototypeCell.tweet = self.tweets[indexPath.row];
-    CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    self.currentCell.tweet = self.tweets[indexPath.row];
+    CGSize size = [self.currentCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height + 1;
 }
 
@@ -83,15 +94,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

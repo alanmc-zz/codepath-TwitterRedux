@@ -14,6 +14,8 @@
 + (TwitterClient *)sharedInstance;
 
 - (void)loginWithCompletion:(void (^)(User *user, NSError *error))completion;
+- (void)homeTimelineWithCompletion:(void (^)(NSArray* tweets, NSError *error))completion;
+
 - (void)openURL:(NSURL *)url;
 
 @end
