@@ -7,6 +7,17 @@
 //
 
 #import "FeedTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
+
+@interface FeedTableViewCell()
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userHandleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tweetLabel;
+
+@end
 
 @implementation FeedTableViewCell
 
@@ -16,8 +27,13 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+- (void)initWithTweet:(Tweet *)tweet {
+    _tweet = tweet;
+    self.userNameLabel.text = tweet.createdBy.name;
+    self.userHandleLabel.text = tweet.createdBy.handle;
+    self.tweetLabel.text = tweet.text;
 }
 
 @end

@@ -10,4 +10,20 @@
 
 @implementation Tweet
 
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
++ (NSArray *)tweetsWithArray:(NSArray *)array {
+    NSMutableArray *tweets = [NSMutableArray array];
+    for (NSDictionary *tweet in array) {
+        [tweets addObject:[[Tweet alloc] initWithDictionary:tweet]];
+    }
+    return tweets;
+}
+
 @end

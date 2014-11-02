@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "FeedViewController.h"
+#import "TwitterClient.h"
 
 @interface AppDelegate ()
 
@@ -15,9 +18,36 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onLogout)
+                                                 name:UserDidLogoutNotif
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onLogin)
+                                                 name:UserDidLoginNotif
+                                               object:nil];
+    User *user = [User currentUser];
+    if (user != nil) {
+        FeedViewController *fvc = [[FeedViewController alloc] init];
+        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:fvc];;
+    } else {
+        self.window.rootViewController = [[LoginViewController alloc] init];
+    }
+    [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+- (void)onLogout {
+    self.window.rootViewController = [[LoginViewController alloc] init];
+}
+
+- (void)onLogin {
+    FeedViewController *fvc = [[FeedViewController alloc] init];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:fvc];;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -40,6 +70,11 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [[TwitterClient sharedInstance] openURL:url];
+    return YES;
 }
 
 @end

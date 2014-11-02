@@ -7,12 +7,23 @@
 //
 
 #import "LoginViewController.h"
+#import "TwitterClient.h"
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
+
+- (IBAction)onLogin:(id)sender {
+    [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
+        if (user != nil) {
+            
+        } else {
+            
+        }
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
