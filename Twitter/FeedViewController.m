@@ -30,7 +30,13 @@
 }
 
 - (void)loadTweets {
-    [[TwitterClient sharedInstance] homeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+    [SVProgressHUD show];
+    NSInteger lastId = 0;
+    if (self.tweets.count > 0) {
+        Tweet *lastTweet = self.tweets.lastObject;
+        lastId = lastTweet.tweetId;
+    }
+    [[TwitterClient sharedInstance] homeTimelineWithLastId:lastId completion:^(NSArray *tweets, NSError *error) {
         if (error != nil) {
             NSLog(@"%@", error);
         } else {
@@ -43,7 +49,6 @@
 
 - (void)refresh
 {
-    [SVProgressHUD show];
     [self clearTweets];
     [self loadTweets];
     [self.refreshControl endRefreshing];
@@ -110,6 +115,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == self.tweets.count - 1) {
+        [self loadTweets];
+    }
+    
     _currentCell = [self.tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];
     return _currentCell;
 }

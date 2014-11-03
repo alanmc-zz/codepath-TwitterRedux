@@ -54,12 +54,17 @@ NSString * const kBaseURL = @"https://api.twitter.com/";
 
 }
 
-- (void)homeTimelineWithCompletion:(void (^)(NSArray* tweets, NSError *error))completion {
+- (void)homeTimelineWithLastId:(NSInteger)lastId completion:(void (^)(NSArray* tweets, NSError *error))completion {
     if ([User currentUser] == nil) {
         completion(nil, [[NSError alloc] initWithDomain:@"twitter" code:404 userInfo:nil]);
     }
     
-    [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (lastId != 0) {
+        [params setValue:[[NSNumber alloc] initWithInteger:lastId] forKey:@"max_id"];
+    }
+         
+    [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
         completion(tweets, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
