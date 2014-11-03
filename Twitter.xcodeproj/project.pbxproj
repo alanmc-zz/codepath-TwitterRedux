@@ -29,6 +29,8 @@
 		235D5B8F1A06B8CA00F7A698 /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B8A1A06B8CA00F7A698 /* reply.png */; };
 		235D5B901A06B8CA00F7A698 /* favorite_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B8B1A06B8CA00F7A698 /* favorite_on.png */; };
 		235D5B911A06B8CA00F7A698 /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B8C1A06B8CA00F7A698 /* favorite.png */; };
+		235D5B951A06C9A700F7A698 /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235D5B931A06C9A700F7A698 /* TweetViewController.m */; };
+		235D5B961A06C9A700F7A698 /* TweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B941A06C9A700F7A698 /* TweetViewController.xib */; };
 		3D953C663927A3947E18997B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4011426B2ABDAA272437B208 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,9 @@
 		235D5B8A1A06B8CA00F7A698 /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
 		235D5B8B1A06B8CA00F7A698 /* favorite_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_on.png; sourceTree = "<group>"; };
 		235D5B8C1A06B8CA00F7A698 /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
+		235D5B921A06C9A700F7A698 /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
+		235D5B931A06C9A700F7A698 /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
+		235D5B941A06C9A700F7A698 /* TweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetViewController.xib; sourceTree = "<group>"; };
 		4011426B2ABDAA272437B208 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -183,6 +188,9 @@
 				235D5B761A0626AA00F7A698 /* FeedViewController.h */,
 				235D5B771A0626AA00F7A698 /* FeedViewController.m */,
 				235D5B781A0626AA00F7A698 /* FeedViewController.xib */,
+				235D5B921A06C9A700F7A698 /* TweetViewController.h */,
+				235D5B931A06C9A700F7A698 /* TweetViewController.m */,
+				235D5B941A06C9A700F7A698 /* TweetViewController.xib */,
 				235D5B7B1A062E8E00F7A698 /* CreateTweetViewController.h */,
 				235D5B7C1A062E8E00F7A698 /* CreateTweetViewController.m */,
 				235D5B7D1A062E8E00F7A698 /* CreateTweetViewController.xib */,
@@ -322,6 +330,7 @@
 				235D5B851A06311100F7A698 /* FeedTableViewCell.xib in Resources */,
 				235D5B871A069D8800F7A698 /* About_logoUsage.png in Resources */,
 				235D5B911A06B8CA00F7A698 /* favorite.png in Resources */,
+				235D5B961A06C9A700F7A698 /* TweetViewController.xib in Resources */,
 				235D5B8F1A06B8CA00F7A698 /* reply.png in Resources */,
 				235D5B8D1A06B8CA00F7A698 /* retweet_on.png in Resources */,
 				235D5B6A1A05BA9300F7A698 /* LoginViewController.xib in Resources */,
@@ -380,6 +389,7 @@
 				235D5B841A06311100F7A698 /* FeedTableViewCell.m in Sources */,
 				2352643A1A05B69A0093099A /* AppDelegate.m in Sources */,
 				235D5B7E1A062E8E00F7A698 /* CreateTweetViewController.m in Sources */,
+				235D5B951A06C9A700F7A698 /* TweetViewController.m in Sources */,
 				235D5B791A0626AA00F7A698 /* FeedViewController.m in Sources */,
 				235D5B751A05CABE00F7A698 /* User.m in Sources */,
 				235D5B721A05CAB000F7A698 /* Tweet.m in Sources */,

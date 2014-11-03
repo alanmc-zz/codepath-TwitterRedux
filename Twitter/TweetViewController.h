@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
+#import "CreateTweetViewController.h"
 
 @interface TweetViewController : UIViewController
+
+@property (nonatomic, strong) Tweet *tweet;
+@property (nonatomic, weak) id<CreateTweetViewControllerDelegate> delegate;
 
 @end

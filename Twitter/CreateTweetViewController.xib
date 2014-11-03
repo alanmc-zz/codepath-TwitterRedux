@@ -6,6 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateTweetViewController">
             <connections>
+                <outlet property="handleLabel" destination="fwi-EA-3Xw" id="S2L-Eg-juj"/>
+                <outlet property="nameLabel" destination="img-pX-KIm" id="PYu-GT-cZr"/>
+                <outlet property="profileImageView" destination="9cW-g9-hmV" id="SSr-N6-z2y"/>
+                <outlet property="tweetInput" destination="ofA-rL-iYp" id="IjZ-xO-pJf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,8 +17,50 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9cW-g9-hmV">
+                    <rect key="frame" x="8" y="70" width="64" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="2Ha-Q4-vhw"/>
+                        <constraint firstAttribute="width" constant="64" id="Zid-he-0jY"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="img-pX-KIm">
+                    <rect key="frame" x="80" y="70" width="232" height="17"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" red="0.16078431372549018" green="0.18431372549019609" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwi-EA-3Xw">
+                    <rect key="frame" x="80" y="91" width="232" height="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" red="0.80000000000000004" green="0.85098039215686272" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofA-rL-iYp">
+                    <rect key="frame" x="8" y="142" width="304" height="418"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ofA-rL-iYp" secondAttribute="trailing" constant="8" id="1HK-vX-R3d"/>
+                <constraint firstAttribute="trailing" secondItem="img-pX-KIm" secondAttribute="trailing" constant="8" id="2iW-fr-YBN"/>
+                <constraint firstItem="9cW-g9-hmV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="4ho-by-sWv"/>
+                <constraint firstItem="9cW-g9-hmV" firstAttribute="leading" secondItem="ofA-rL-iYp" secondAttribute="leading" id="KdH-og-eaF"/>
+                <constraint firstItem="9cW-g9-hmV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="P5L-CJ-JeC"/>
+                <constraint firstAttribute="bottom" secondItem="ofA-rL-iYp" secondAttribute="bottom" constant="8" id="Ubb-qV-CaL"/>
+                <constraint firstItem="fwi-EA-3Xw" firstAttribute="top" secondItem="img-pX-KIm" secondAttribute="bottom" constant="4" id="gOL-fv-K3n"/>
+                <constraint firstItem="img-pX-KIm" firstAttribute="top" secondItem="9cW-g9-hmV" secondAttribute="top" id="hV8-Wb-bTr"/>
+                <constraint firstItem="fwi-EA-3Xw" firstAttribute="leading" secondItem="9cW-g9-hmV" secondAttribute="trailing" constant="8" id="k1M-L2-RAK"/>
+                <constraint firstAttribute="trailing" secondItem="fwi-EA-3Xw" secondAttribute="trailing" constant="8" id="q61-LU-H2O"/>
+                <constraint firstItem="ofA-rL-iYp" firstAttribute="top" secondItem="9cW-g9-hmV" secondAttribute="bottom" constant="8" id="sZW-dd-aOx"/>
+                <constraint firstItem="img-pX-KIm" firstAttribute="leading" secondItem="9cW-g9-hmV" secondAttribute="trailing" constant="8" id="smR-aA-ix2"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="183" y="349"/>
         </view>
     </objects>
 </document>

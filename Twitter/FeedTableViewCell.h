@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 
+@protocol FeedTableViewCellDelegate <NSObject>
+
+- (void)onReply:(Tweet *)tweet;
+
+@end
+
 @interface FeedTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) Tweet* tweet;
+@property (nonatomic, weak) id<FeedTableViewCellDelegate> delegate;
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CreateTweetViewController.h"
+#import "FeedTableViewCell.h"
 
-@interface FeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface FeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CreateTweetViewControllerDelegate, FeedTableViewCellDelegate>
 
 @end
