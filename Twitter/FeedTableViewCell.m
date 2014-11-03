@@ -38,7 +38,8 @@
     if (!self.retweetButton.selected) {
         [[TwitterClient sharedInstance] retweetId:self.tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
             if (error == nil) {
-                self.retweetCountLabel.text = [NSString stringWithFormat:@"%ld", (long)self.tweet.retweetCount + 1];
+                self.tweet.retweetCount += 1;
+                self.retweetCountLabel.text = [NSString stringWithFormat:@"%ld", (long)self.tweet.retweetCount];
                 self.retweetButton.selected = YES;
             } else {
                 NSLog(@"%@", error);
@@ -52,7 +53,8 @@
         [[TwitterClient sharedInstance] favoriteStatus:self.tweet.tweetId completion:^(NSError *error) {
             if (error == nil) {
                 self.favoriteButton.selected = YES;
-                self.favoriteCountLabel.text = [NSString stringWithFormat:@"%ld", (long)self.tweet.favoriteCount + 1];
+                self.tweet.favoriteCount += 1;
+                self.favoriteCountLabel.text = [NSString stringWithFormat:@"%ld", (long)self.tweet.favoriteCount];
             } else {
                 NSLog(@"%@", error);
             }
@@ -61,7 +63,8 @@
         [[TwitterClient sharedInstance] unfavoriteStatus:self.tweet.tweetId completion:^(NSError *error) {
             if (error == nil) {
                 self.favoriteButton.selected = NO;
-                self.favoriteCountLabel.text = [NSString stringWithFormat:@"%ld", (long)self.tweet.favoriteCount - 1];
+                self.tweet.favoriteCount -= 1;
+                self.favoriteCountLabel.text = [NSString stringWithFormat:@"%ld", (long)self.tweet.favoriteCount];
             } else {
                 NSLog(@"%@", error);
             }

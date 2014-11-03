@@ -25,21 +25,16 @@
 
 @implementation FeedViewController
 
-- (void)clearTweets {
-    self.tweets = [NSMutableArray array];
-}
-
-- (void)loadTweets {
+- (void)loadTweetsWithTableView:(UITableView *)tableView startFrom:(NSInteger)fromId clearTweets:(BOOL)clearTweets {
     [SVProgressHUD show];
-    NSInteger lastId = 0;
-    if (self.tweets.count > 0) {
-        Tweet *lastTweet = self.tweets.lastObject;
-        lastId = lastTweet.tweetId;
-    }
-    [[TwitterClient sharedInstance] homeTimelineWithLastId:lastId completion:^(NSArray *tweets, NSError *error) {
+
+    [[TwitterClient sharedInstance] homeTimelineWithLastId:fromId completion:^(NSArray *tweets, NSError *error) {
         if (error != nil) {
             NSLog(@"%@", error);
         } else {
+            if (clearTweets) {
+                self.tweets = [NSMutableArray array];
+            }
             [self.tweets addObjectsFromArray:tweets];
             [self.tableView reloadData];
         }
@@ -49,8 +44,7 @@
 
 - (void)refresh
 {
-    [self clearTweets];
-    [self loadTweets];
+    [self loadTweetsWithTableView:self.tableView startFrom:0 clearTweets:YES];
     [self.refreshControl endRefreshing];
 }
 
@@ -107,7 +101,7 @@
                                                                     action:@selector(onNewTweet)];
     self.navigationItem.rightBarButtonItem = createTweetButton;
     
-    [self loadTweets];
+    [self loadTweetsWithTableView:self.tableView startFrom:0 clearTweets:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -117,7 +111,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == self.tweets.count - 1) {
-        [self loadTweets];
+        NSInteger lastId = 0;
+        if (self.tweets.count > 0) {
+            Tweet *lastTweet = self.tweets.lastObject;
+            lastId = lastTweet.tweetId;
+        }
+        [self loadTweetsWithTableView:self.tableView startFrom:lastId clearTweets:NO];
     }
     
     _currentCell = [self.tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];

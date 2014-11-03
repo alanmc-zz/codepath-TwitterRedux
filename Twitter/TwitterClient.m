@@ -99,7 +99,6 @@ NSString * const kBaseURL = @"https://api.twitter.com/";
     
     [self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
-        NSLog(@"%@", tweet);
         completion(tweet, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completion(nil, error);
@@ -117,7 +116,6 @@ NSString * const kBaseURL = @"https://api.twitter.com/";
     [self POST:@"1.1/favorites/create.json"
     parameters:params
        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         NSLog(@"%@", responseObject);
         completion(nil);
     }
        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -144,6 +142,22 @@ NSString * const kBaseURL = @"https://api.twitter.com/";
        }];
 }
 
+- (void)destroyStatus:(NSInteger)tweetId completion:(void (^)(NSError *error))completion {
+    if ([User currentUser] == nil) {
+        completion([[NSError alloc] initWithDomain:@"twitter" code:404 userInfo:nil]);
+    }
+    
+    
+    [self POST:[NSString stringWithFormat:@"1.1/statuses/destroy/%ld.json", (long)tweetId]
+    parameters:nil
+       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+           completion(nil);
+       }
+       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+           NSLog(@"%@", error);
+           completion(error);
+       }];
+}
 - (void)openURL:(NSURL *)url {
     [self fetchAccessTokenWithPath:@"oauth/access_token"
           method:@"POST"

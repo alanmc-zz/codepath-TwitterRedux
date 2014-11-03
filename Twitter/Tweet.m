@@ -13,7 +13,7 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
-        self.tweetId = [dictionary[@"id_str"] integerValue];
+        self.tweetId = [dictionary[@"id"] integerValue];
         self.text = dictionary[@"text"];
         self.createdBy = [[User alloc] initWithDictionary:dictionary[@"user"]];
 
@@ -27,9 +27,9 @@
 
         self.isRetweet = [dictionary[@"retweeted"] boolValue];
         self.isFavorite = [dictionary[@"favorited"] boolValue];
-        NSLog(@"%@", dictionary);
-        if (dictionary[@"retweeted"]) {
-            self.retweetedBy = [[User alloc] initWithDictionary:dictionary[@""]];
+        
+        if (self.isRetweet) {
+            NSLog(@"%@", dictionary);
         }
 
     }

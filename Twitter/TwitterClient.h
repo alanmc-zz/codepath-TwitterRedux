@@ -20,6 +20,7 @@
 - (void)updateStatus:(NSString *)status replyTo:(NSInteger)tweetId completion:(void (^)(Tweet *tweet, NSError *error))completion;
 - (void)favoriteStatus:(NSInteger)tweetId completion:(void (^)(NSError *error))completion;
 - (void)unfavoriteStatus:(NSInteger)tweetId completion:(void (^)(NSError *error))completion;
+- (void)destroyStatus:(NSInteger)tweetId completion:(void (^)(NSError *error))completion;
 
 - (void)openURL:(NSURL *)url;
 

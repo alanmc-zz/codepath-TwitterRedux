@@ -40,7 +40,7 @@
     
     self.tweetInput.delegate = self;
     if (self.replyTo != nil) {
-        self.tweetInput.text = [NSString stringWithFormat:@"@%@", self.replyTo.createdBy.handle];
+        self.tweetInput.text = [NSString stringWithFormat:@"@%@ ", self.replyTo.createdBy.handle];
     }
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
