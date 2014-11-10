@@ -48,10 +48,10 @@
     MenuTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MenuTableViewCell"];
     switch (indexPath.row) {
         case TwitterViewTypeHomeTimeline:
-            cell.menuItemLabel.text = @"Profile";
+            cell.menuItemLabel.text = @"Home Timeline";
             break;
         case TwitterViewTypeProfile:
-            cell.menuItemLabel.text = @"Home Timeline";
+            cell.menuItemLabel.text = @"Profile";
             break;
         case TwitterViewTypeMentions:
             cell.menuItemLabel.text = @"Mentions";
@@ -66,10 +66,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case TwitterViewTypeHomeTimeline:
-            break;
         case TwitterViewTypeProfile:
-            break;
         case TwitterViewTypeMentions:
+            [self.slidableMenuController onMenuSelect:indexPath.row];
             break;
         default:
             [User logout];

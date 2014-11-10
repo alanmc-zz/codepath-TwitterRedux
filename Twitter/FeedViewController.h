@@ -10,9 +10,13 @@
 #import "CreateTweetViewController.h"
 #import "FeedTableViewCell.h"
 #import "ViewTypes.h"
-@interface FeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CreateTweetViewControllerDelegate, FeedTableViewCellDelegate>
+#import "SlidableMenuViewController.h"
+
+@interface FeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CreateTweetViewControllerDelegate, FeedTableViewCellDelegate, SlidableMenuViewContentControllerDelegate>
 
 @property (assign, nonatomic) TwitterViewType currentView;
 @property (strong, nonatomic) User* profileUser;
+
+- (void)didSelectMenuItem:(NSInteger)selectedItem;
 
 @end

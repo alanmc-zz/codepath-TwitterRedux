@@ -24,6 +24,7 @@ NSString * const UserDidLoginNotif = @"UserDidLoginNotif";
     self = [super init];
     if (self) {
         self.userDictionary = dictionary;
+        self.userID = [dictionary[@"id"] integerValue];
         self.name = dictionary[@"name"];
         self.handle = dictionary[@"screen_name"];
         self.profileImageURL = [NSURL URLWithString:dictionary[@"profile_image_url"]];

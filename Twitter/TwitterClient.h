@@ -15,8 +15,10 @@
 + (TwitterClient *)sharedInstance;
 
 - (void)loginWithCompletion:(void (^)(User *user, NSError *error))completion;
+
 - (void)homeTimelineWithLastId:(NSInteger)lastId completion:(void (^)(NSArray* tweets, NSError *error))completion;
-- (void)profileWithLastId:(NSInteger)lastId completion:(void (^)(User* user, NSArray* tweets, NSError *error))completion;
+- (void)mentionsWithLastId:(NSInteger)lastId completion:(void (^)(NSArray* tweets, NSError *error))completion;
+- (void)profile:(NSInteger)userID withLastId:(NSInteger)lastId completion:(void (^)(User* user, NSArray* tweets, NSError *error))completion;
 
 - (void)retweetId:(NSInteger)id completion:(void (^)(Tweet *tweet, NSError *error))completion;
 - (void)updateStatus:(NSString *)status replyTo:(NSInteger)tweetId completion:(void (^)(Tweet *tweet, NSError *error))completion;

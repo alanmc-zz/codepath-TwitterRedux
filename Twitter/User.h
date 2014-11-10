@@ -18,6 +18,7 @@ extern NSString * const UserDidLoginNotif;
 @property (nonatomic, strong) NSURL* profileImageURL;
 @property (nonatomic, strong) NSURL* backgroundImageURL;
 
+@property (nonatomic, assign) NSInteger userID;
 @property (nonatomic, assign) NSInteger tweetCount;
 @property (nonatomic, assign) NSInteger followerCount;
 @property (nonatomic, assign) NSInteger followingCount;

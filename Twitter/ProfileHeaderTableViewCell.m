@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweetCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followerCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *handleLabel;
 
 @end
 
@@ -25,6 +27,8 @@
     [self.backgroundImage setImageWithURL:user.backgroundImageURL];
     [self.profileImageView setImageWithURL:user.profileImageURL];
 
+    self.nameLabel.text = user.name;
+    self.handleLabel.text = [NSString stringWithFormat:@"@%@", user.handle];
     self.tweetCountLabel.text = [NSString stringWithFormat:@"%ld", (long)user.tweetCount];
     self.followerCountLabel.text = [NSString stringWithFormat:@"%ld", (long)user.followerCount];
     self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", (long)user.followingCount];

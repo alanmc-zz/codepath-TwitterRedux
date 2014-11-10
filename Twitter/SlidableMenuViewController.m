@@ -18,7 +18,7 @@
 
 @implementation SlidableMenuViewController
 
-- (id)initWithMenuViewController:(UIViewController *)mvc contentViewController:(UIViewController *)cvc {
+- (id)initWithMenuViewController:(UIViewController<SlidableMenuViewMenuControllerDelegate> *)mvc contentViewController:(UIViewController<SlidableMenuViewContentControllerDelegate> *)cvc {
     self = [super init];
     if (self) {
         _menuViewController = mvc;
@@ -34,6 +34,15 @@
     return self;
 }
 
+- (void)onMenuSelect:(NSInteger)selectedItem {
+    UINavigationController *nav = (UINavigationController *)self.contentViewController;
+    [(UIViewController<SlidableMenuViewContentControllerDelegate> *)nav.topViewController didSelectMenuItem:selectedItem];
+    [UIView animateWithDuration:0.2 animations:^{
+        CGRect contentFrame = self.contentView.frame;
+        CGSize contentSize = contentFrame.size;
+        self.contentView.frame = CGRectMake(0, 0, contentSize.width, contentSize.height);
+    }];
+}
 
 - (IBAction)onPan:(UIPanGestureRecognizer *)panGestureRecognizer {
 
@@ -67,11 +76,11 @@
     
     self.menuViewController.view.frame = self.menuView.frame;
     [self.menuView addSubview:self.menuViewController.view];
-    NSLog(@"%@", self.contentViewController.view);
+
     self.contentViewController.view.frame = self.contentView.bounds;
     [self.contentView addSubview:self.contentViewController.view];
-    
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

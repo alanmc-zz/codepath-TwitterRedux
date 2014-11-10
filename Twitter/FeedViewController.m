@@ -10,6 +10,7 @@
 #import "TweetViewController.h"
 #import "CreateTweetViewController.h"
 #import "FeedTableViewCell.h"
+#import "ProfileHeaderTableViewCell.h"
 #import "User.h"
 #import "TwitterClient.h"
 #import "SVProgressHUD.h"
@@ -18,6 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, atomic) FeedTableViewCell *currentCell;
+@property (strong, atomic) ProfileHeaderTableViewCell *profileCell;
+
 @property (strong, atomic) NSMutableArray* tweets;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
@@ -25,21 +28,85 @@
 
 @implementation FeedViewController
 
+- (void)didSelectMenuItem:(NSInteger)selectedItem {
+    [self updateView:selectedItem];
+}
+
+- (void)updateView:(TwitterViewType)viewType {
+    self.currentView = viewType;
+    switch (self.currentView) {
+        case TwitterViewTypeHomeTimeline:
+        {
+            self.title = @"Home";
+            break;
+        }
+        case TwitterViewTypeProfile:
+        {
+            self.title = @"Profile";
+            break;
+        }
+        case TwitterViewTypeMentions:
+        {
+            self.title = @"Mentions";
+            break;
+        }
+    }
+    [self loadTweetsWithTableView:self.tableView startFrom:0 clearTweets:YES];
+}
+
 - (void)loadTweetsWithTableView:(UITableView *)tableView startFrom:(NSInteger)fromId clearTweets:(BOOL)clearTweets {
     [SVProgressHUD show];
 
-    [[TwitterClient sharedInstance] homeTimelineWithLastId:fromId completion:^(NSArray *tweets, NSError *error) {
-        if (error != nil) {
-            NSLog(@"%@", error);
-        } else {
-            if (clearTweets) {
-                self.tweets = [NSMutableArray array];
-            }
-            [self.tweets addObjectsFromArray:tweets];
-            [self.tableView reloadData];
+    switch (self.currentView) {
+        case TwitterViewTypeHomeTimeline:
+        {
+            [[TwitterClient sharedInstance] homeTimelineWithLastId:fromId completion:^(NSArray *tweets, NSError *error) {
+                [SVProgressHUD dismiss];
+                if (error != nil) {
+                    NSLog(@"%@", error);
+                } else {
+                    if (clearTweets) {
+                        self.tweets = [NSMutableArray array];
+                    }
+                    [self.tweets addObjectsFromArray:tweets];
+                    [self.tableView reloadData];
+                }
+            }];
+            break;
         }
-        [SVProgressHUD dismiss];
-    }];
+        case TwitterViewTypeMentions:
+        {
+            [[TwitterClient sharedInstance] mentionsWithLastId:fromId completion:^(NSArray *tweets, NSError *error) {
+                [SVProgressHUD dismiss];
+                if (error != nil) {
+                    NSLog(@"%@", error);
+                } else {
+                    if (clearTweets) {
+                        self.tweets = [NSMutableArray array];
+                    }
+                    [self.tweets addObjectsFromArray:tweets];
+                    [self.tableView reloadData];
+                }
+            }];
+            break;
+        }
+        case TwitterViewTypeProfile:
+        {
+            [[TwitterClient sharedInstance] profile:[User currentUser].userID withLastId:fromId completion:^(User *user, NSArray *tweets, NSError *error) {
+                [SVProgressHUD dismiss];
+                if (error != nil) {
+                    NSLog(@"%@", error);
+                } else {
+                    if (clearTweets) {
+                        self.tweets = [NSMutableArray array];
+                    }
+                    [self.tweets addObjectsFromArray:tweets];
+                    [self.tableView reloadData];
+                }
+            }];
+            break;
+        }
+    }
 }
 
 - (void)refresh
@@ -67,7 +134,6 @@
     [super viewDidLoad];
 
     self.tweets = [NSMutableArray array];
-    self.title = @"Home";
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -75,6 +141,8 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"FeedTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"FeedTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ProfileHeaderTableViewCell" bundle:nil]
+         forCellReuseIdentifier:@"ProfileHeaderTableViewCell"];
 
     // Configure Refresh Control
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -95,7 +163,7 @@
                                                                     action:@selector(onNewTweet)];
     self.navigationItem.rightBarButtonItem = createTweetButton;
     
-    [self loadTweetsWithTableView:self.tableView startFrom:0 clearTweets:YES];
+    [self updateView:TwitterViewTypeHomeTimeline];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -117,15 +185,31 @@
         }
         [self loadTweetsWithTableView:self.tableView startFrom:lastId clearTweets:NO];
     }
-    
-    _currentCell = [self.tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];
-    return _currentCell;
+    if (self.currentView == TwitterViewTypeProfile && indexPath.row == 0) {
+        _profileCell = [self.tableView dequeueReusableCellWithIdentifier:@"ProfileHeaderTableViewCell"];
+        return _profileCell;
+    } else {
+        _currentCell = [self.tableView dequeueReusableCellWithIdentifier:@"FeedTableViewCell"];
+        return _currentCell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGSize size;
+    
     self.currentCell.delegate = self;
-    self.currentCell.tweet = self.tweets[indexPath.row];
-    CGSize size = [self.currentCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    if (self.currentView == TwitterViewTypeProfile) {
+        if (indexPath.row == 0) {
+            self.profileCell.user = [User currentUser];
+            size = [self.profileCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        } else {
+            self.currentCell.tweet = self.tweets[indexPath.row - 1];
+            size = [self.currentCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        }
+    } else {
+        self.currentCell.tweet = self.tweets[indexPath.row];
+        size = [self.currentCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    }
     return size.height + 1;
 }
 
@@ -137,7 +221,6 @@
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:tvc];
     [self presentViewController:nvc animated:YES completion:nil];
 }
-
 
 - (void)onNewTweet {
     CreateTweetViewController *ctvc = [[CreateTweetViewController alloc] init];

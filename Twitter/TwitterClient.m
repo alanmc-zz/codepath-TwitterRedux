@@ -72,6 +72,24 @@ NSString * const kBaseURL = @"https://api.twitter.com/";
     }];
 }
 
+- (void)mentionsWithLastId:(NSInteger)lastId completion:(void (^)(NSArray* tweets, NSError *error))completion {
+    if ([User currentUser] == nil) {
+        completion(nil, [[NSError alloc] initWithDomain:@"twitter" code:404 userInfo:nil]);
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (lastId != 0) {
+        [params setValue:[[NSNumber alloc] initWithInteger:lastId] forKey:@"max_id"];
+    }
+    
+    [self GET:@"1.1/statuses/mentions_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
 - (void)profile:(NSInteger)userID withLastId:(NSInteger)lastId completion:(void (^)(User* user, NSArray* tweets, NSError *error))completion {
     if ([User currentUser] == nil) {
         completion(nil, nil, [[NSError alloc] initWithDomain:@"twitter" code:404 userInfo:nil]);
@@ -83,13 +101,14 @@ NSString * const kBaseURL = @"https://api.twitter.com/";
     }
     
     [self GET:@"1.1/statuses/user_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSMutableDictionary *userParams = [NSMutableDictionary dictionary];
-        [params setValue:[[NSNumber alloc] initWithInteger:userID] forKey:@"user_id"];
-
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+
+        NSMutableDictionary *userParams = [NSMutableDictionary dictionary];
+        [userParams setValue:[[NSNumber alloc] initWithInteger:userID] forKey:@"user_id"];
 
         [self GET:@"1.1/users/show.json" parameters:userParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
             User *user = [[User alloc] initWithDictionary:responseObject];
+            NSLog(@"%@", tweets);
             completion(user, tweets, nil);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             completion(nil, nil, error);

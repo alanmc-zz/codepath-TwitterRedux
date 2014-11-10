@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlidableMenuViewController.h"
 
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) SlidableMenuViewController *slidableMenuController;
 
 @end

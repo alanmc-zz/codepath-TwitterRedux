@@ -8,12 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+@class SlidableMenuViewController;
+
+@protocol SlidableMenuViewContentControllerDelegate <NSObject>
+
+- (void)didSelectMenuItem:(NSInteger)selectedItem;
+
+@end
+
+@protocol SlidableMenuViewMenuControllerDelegate <NSObject>
+
+@property (strong, nonatomic) SlidableMenuViewController *slidableMenuController;
+
+@end
 
 @interface SlidableMenuViewController : UIViewController
 
-@property (strong, nonatomic) UIViewController *menuViewController;
-@property (strong, nonatomic) UIViewController *contentViewController;
+@property (strong, nonatomic) UIViewController<SlidableMenuViewMenuControllerDelegate> *menuViewController;
+@property (strong, nonatomic) UIViewController<SlidableMenuViewContentControllerDelegate> *contentViewController;
 
 - (id)initWithMenuViewController:(UIViewController *)mvc contentViewController:(UIViewController *)cvc;
+- (void)onMenuSelect:(NSInteger)selectedItem;
 
 @end

@@ -35,9 +35,13 @@
     if (user != nil) {
         FeedViewController *fvc = [[FeedViewController alloc] init];
         MenuViewController *mvc = [[MenuViewController alloc] init];
+        
         UINavigationController *nmvc = [[UINavigationController alloc] initWithRootViewController:mvc];
         UINavigationController *nfvc = [[UINavigationController alloc] initWithRootViewController:fvc];
+        
         SlidableMenuViewController *svc = [[SlidableMenuViewController alloc] initWithMenuViewController:nmvc contentViewController:nfvc];
+        mvc.slidableMenuController = svc;
+        
         self.window.rootViewController = svc;
     } else {
         self.window.rootViewController = [[LoginViewController alloc] init];
