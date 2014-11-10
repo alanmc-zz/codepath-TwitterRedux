@@ -89,12 +89,6 @@
                                                                            alpha:50.0f/255.0f];
     self.navigationController.navigationBar.translucent = YES;
     
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out"
-                                                                     style:UIBarButtonItemStylePlain
-                                                                    target:self
-                                                                    action:@selector(onLogout)];
-    self.navigationItem.leftBarButtonItem = logoutButton;
-    
     UIBarButtonItem *createTweetButton = [[UIBarButtonItem alloc] initWithTitle:@"New"
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
@@ -105,7 +99,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tweets.count;
+    if (self.currentView == TwitterViewTypeProfile) {
+        // Reserve a spot for the header cell
+        return self.tweets.count + 1;
+    } else {
+        return self.tweets.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,9 +138,6 @@
     [self presentViewController:nvc animated:YES completion:nil];
 }
 
-- (void)onLogout {
-    [User logout];
-}
 
 - (void)onNewTweet {
     CreateTweetViewController *ctvc = [[CreateTweetViewController alloc] init];

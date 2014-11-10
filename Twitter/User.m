@@ -27,6 +27,11 @@ NSString * const UserDidLoginNotif = @"UserDidLoginNotif";
         self.name = dictionary[@"name"];
         self.handle = dictionary[@"screen_name"];
         self.profileImageURL = [NSURL URLWithString:dictionary[@"profile_image_url"]];
+        self.backgroundImageURL = [NSURL URLWithString:dictionary[@"profile_background_image_url"]];
+
+        self.tweetCount = [dictionary[@"statuses_count"] integerValue];
+        self.followerCount = [dictionary[@"followers_count"] integerValue];
+        self.followingCount = [dictionary[@"following_count"] integerValue];
     }
     return self;
 }
@@ -62,7 +67,7 @@ NSString *kCurrentUserKey = @"kCurrentUserKey";
 + (void)logout {
     [self setCurrentUser:nil];
     [[TwitterClient sharedInstance].requestSerializer removeAccessToken];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogoutNotif object:nil];
 }
+
 @end

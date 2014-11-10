@@ -72,6 +72,33 @@ NSString * const kBaseURL = @"https://api.twitter.com/";
     }];
 }
 
+- (void)profile:(NSInteger)userID withLastId:(NSInteger)lastId completion:(void (^)(User* user, NSArray* tweets, NSError *error))completion {
+    if ([User currentUser] == nil) {
+        completion(nil, nil, [[NSError alloc] initWithDomain:@"twitter" code:404 userInfo:nil]);
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (lastId != 0) {
+        [params setValue:[[NSNumber alloc] initWithInteger:lastId] forKey:@"max_id"];
+    }
+    
+    [self GET:@"1.1/statuses/user_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSMutableDictionary *userParams = [NSMutableDictionary dictionary];
+        [params setValue:[[NSNumber alloc] initWithInteger:userID] forKey:@"user_id"];
+
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+
+        [self GET:@"1.1/users/show.json" parameters:userParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            User *user = [[User alloc] initWithDictionary:responseObject];
+            completion(user, tweets, nil);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            completion(nil, nil, error);
+        }];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, nil, error);
+    }];
+}
+
 - (void)retweetId:(NSInteger)tweetId completion:(void (^)(Tweet* tweet, NSError *error))completion {
     if ([User currentUser] == nil) {
         completion(nil, [[NSError alloc] initWithDomain:@"twitter" code:404 userInfo:nil]);

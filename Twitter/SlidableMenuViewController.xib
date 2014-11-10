@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SlidableMenuViewController">
+            <connections>
+                <outlet property="contentView" destination="nMA-Yj-hi2" id="WMx-0b-0X9"/>
+                <outlet property="contentViewPanGestureRecognizer" destination="JqF-Sw-QVS" id="nSN-lz-fgx"/>
+                <outlet property="menuView" destination="znT-9x-rmF" id="dyc-Ky-1Wj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="znT-9x-rmF">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" red="0.31401348338251833" green="0.41540266435109008" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMA-Yj-hi2">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" red="1" green="0.15697981398223027" blue="0.042154324001802967" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="JqF-Sw-QVS" appends="YES" id="rRA-UD-6JD"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="znT-9x-rmF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0Mj-UG-yQH"/>
+                <constraint firstAttribute="trailing" secondItem="znT-9x-rmF" secondAttribute="trailing" id="7Bi-Mk-GlM"/>
+                <constraint firstAttribute="bottom" secondItem="nMA-Yj-hi2" secondAttribute="bottom" id="PdG-AC-bFL"/>
+                <constraint firstItem="nMA-Yj-hi2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UhO-SM-hVv"/>
+                <constraint firstAttribute="bottom" secondItem="znT-9x-rmF" secondAttribute="bottom" id="Vi7-mU-dam"/>
+                <constraint firstAttribute="trailing" secondItem="nMA-Yj-hi2" secondAttribute="trailing" id="j5y-us-eaH"/>
+                <constraint firstItem="znT-9x-rmF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yEm-LJ-A6b"/>
+                <constraint firstItem="nMA-Yj-hi2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yuk-70-yFY"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="640" y="464"/>
+        </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="JqF-Sw-QVS">
+            <connections>
+                <action selector="onPan:" destination="-1" id="FMj-Ns-pGG"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+</document>

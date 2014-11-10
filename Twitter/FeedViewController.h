@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CreateTweetViewController.h"
 #import "FeedTableViewCell.h"
-
+#import "ViewTypes.h"
 @interface FeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CreateTweetViewControllerDelegate, FeedTableViewCellDelegate>
+
+@property (assign, nonatomic) TwitterViewType currentView;
+@property (strong, nonatomic) User* profileUser;
 
 @end

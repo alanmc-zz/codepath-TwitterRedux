@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "SlidableMenuViewController.h"
+#import "MenuViewController.h"
 #import "LoginViewController.h"
 #import "FeedViewController.h"
 #import "TwitterClient.h"
@@ -32,10 +34,16 @@
     User *user = [User currentUser];
     if (user != nil) {
         FeedViewController *fvc = [[FeedViewController alloc] init];
-        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:fvc];;
+        MenuViewController *mvc = [[MenuViewController alloc] init];
+        UINavigationController *nmvc = [[UINavigationController alloc] initWithRootViewController:mvc];
+        UINavigationController *nfvc = [[UINavigationController alloc] initWithRootViewController:fvc];
+        SlidableMenuViewController *svc = [[SlidableMenuViewController alloc] initWithMenuViewController:nmvc contentViewController:nfvc];
+        self.window.rootViewController = svc;
     } else {
         self.window.rootViewController = [[LoginViewController alloc] init];
     }
+    
+
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -47,7 +55,12 @@
 
 - (void)onLogin {
     FeedViewController *fvc = [[FeedViewController alloc] init];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:fvc];;
+    MenuViewController *mvc = [[MenuViewController alloc] init];
+    
+    UINavigationController *nmvc = [[UINavigationController alloc] initWithRootViewController:mvc];
+    UINavigationController *nfvc = [[UINavigationController alloc] initWithRootViewController:fvc];
+    SlidableMenuViewController *svc = [[SlidableMenuViewController alloc] initWithMenuViewController:nmvc contentViewController:nfvc];
+    self.window.rootViewController = svc;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

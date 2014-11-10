@@ -31,6 +31,16 @@
 		235D5B911A06B8CA00F7A698 /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B8C1A06B8CA00F7A698 /* favorite.png */; };
 		235D5B951A06C9A700F7A698 /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235D5B931A06C9A700F7A698 /* TweetViewController.m */; };
 		235D5B961A06C9A700F7A698 /* TweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235D5B941A06C9A700F7A698 /* TweetViewController.xib */; };
+		235EC8151A0FE47A00BB50DD /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235EC8131A0FE47A00BB50DD /* MenuViewController.m */; };
+		235EC8161A0FE47A00BB50DD /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8141A0FE47A00BB50DD /* MenuViewController.xib */; };
+		235EC81A1A0FE51A00BB50DD /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235EC8181A0FE51A00BB50DD /* MenuTableViewCell.m */; };
+		235EC81B1A0FE51A00BB50DD /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8191A0FE51A00BB50DD /* MenuTableViewCell.xib */; };
+		235EC81F1A0FE7B900BB50DD /* SlidableMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235EC81D1A0FE7B900BB50DD /* SlidableMenuViewController.m */; };
+		235EC8201A0FE7B900BB50DD /* SlidableMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235EC81E1A0FE7B900BB50DD /* SlidableMenuViewController.xib */; };
+		235EC8241A10542200BB50DD /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8231A10542200BB50DD /* menu.png */; };
+		235EC8261A1056E400BB50DD /* menu-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8251A1056E400BB50DD /* menu-20.png */; };
+		235EC82A1A10598900BB50DD /* ProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235EC8281A10598900BB50DD /* ProfileHeaderTableViewCell.m */; };
+		235EC82B1A10598900BB50DD /* ProfileHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8291A10598900BB50DD /* ProfileHeaderTableViewCell.xib */; };
 		3D953C663927A3947E18997B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4011426B2ABDAA272437B208 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +94,21 @@
 		235D5B921A06C9A700F7A698 /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
 		235D5B931A06C9A700F7A698 /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
 		235D5B941A06C9A700F7A698 /* TweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetViewController.xib; sourceTree = "<group>"; };
+		235EC8121A0FE47A00BB50DD /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		235EC8131A0FE47A00BB50DD /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		235EC8141A0FE47A00BB50DD /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		235EC8171A0FE51A00BB50DD /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
+		235EC8181A0FE51A00BB50DD /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
+		235EC8191A0FE51A00BB50DD /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		235EC81C1A0FE7B900BB50DD /* SlidableMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidableMenuViewController.h; sourceTree = "<group>"; };
+		235EC81D1A0FE7B900BB50DD /* SlidableMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidableMenuViewController.m; sourceTree = "<group>"; };
+		235EC81E1A0FE7B900BB50DD /* SlidableMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlidableMenuViewController.xib; sourceTree = "<group>"; };
+		235EC8221A10526D00BB50DD /* ViewTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewTypes.h; sourceTree = "<group>"; };
+		235EC8231A10542200BB50DD /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		235EC8251A1056E400BB50DD /* menu-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-20.png"; sourceTree = "<group>"; };
+		235EC8271A10598900BB50DD /* ProfileHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderTableViewCell.h; sourceTree = "<group>"; };
+		235EC8281A10598900BB50DD /* ProfileHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderTableViewCell.m; sourceTree = "<group>"; };
+		235EC8291A10598900BB50DD /* ProfileHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		4011426B2ABDAA272437B208 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,6 +162,7 @@
 		235264331A05B69A0093099A /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				235EC8211A1051EE00BB50DD /* Constants */,
 				235D5B881A06B8CA00F7A698 /* retweet_on.png */,
 				235D5B891A06B8CA00F7A698 /* retweet.png */,
 				235D5B8A1A06B8CA00F7A698 /* reply.png */,
@@ -158,6 +184,8 @@
 		235264341A05B69A0093099A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				235EC8251A1056E400BB50DD /* menu-20.png */,
+				235EC8231A10542200BB50DD /* menu.png */,
 				235D5B861A069D8800F7A698 /* About_logoUsage.png */,
 				235264351A05B69A0093099A /* Info.plist */,
 				235264361A05B69A0093099A /* main.m */,
@@ -197,6 +225,12 @@
 				235D5B661A05BA9300F7A698 /* LoginViewController.h */,
 				235D5B671A05BA9300F7A698 /* LoginViewController.m */,
 				235D5B681A05BA9300F7A698 /* LoginViewController.xib */,
+				235EC81C1A0FE7B900BB50DD /* SlidableMenuViewController.h */,
+				235EC81D1A0FE7B900BB50DD /* SlidableMenuViewController.m */,
+				235EC81E1A0FE7B900BB50DD /* SlidableMenuViewController.xib */,
+				235EC8121A0FE47A00BB50DD /* MenuViewController.h */,
+				235EC8131A0FE47A00BB50DD /* MenuViewController.m */,
+				235EC8141A0FE47A00BB50DD /* MenuViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -224,11 +258,25 @@
 		235D5B801A0630E100F7A698 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				235EC8171A0FE51A00BB50DD /* MenuTableViewCell.h */,
+				235EC8181A0FE51A00BB50DD /* MenuTableViewCell.m */,
+				235EC8191A0FE51A00BB50DD /* MenuTableViewCell.xib */,
 				235D5B811A06311100F7A698 /* FeedTableViewCell.h */,
 				235D5B821A06311100F7A698 /* FeedTableViewCell.m */,
 				235D5B831A06311100F7A698 /* FeedTableViewCell.xib */,
+				235EC8271A10598900BB50DD /* ProfileHeaderTableViewCell.h */,
+				235EC8281A10598900BB50DD /* ProfileHeaderTableViewCell.m */,
+				235EC8291A10598900BB50DD /* ProfileHeaderTableViewCell.xib */,
 			);
 			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		235EC8211A1051EE00BB50DD /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				235EC8221A10526D00BB50DD /* ViewTypes.h */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		6E3A4727490DE3C1CCB113FB /* Pods */ = {
@@ -324,14 +372,20 @@
 			files = (
 				235264451A05B69A0093099A /* LaunchScreen.xib in Resources */,
 				235D5B8E1A06B8CA00F7A698 /* retweet.png in Resources */,
+				235EC8241A10542200BB50DD /* menu.png in Resources */,
+				235EC82B1A10598900BB50DD /* ProfileHeaderTableViewCell.xib in Resources */,
 				235264421A05B69A0093099A /* Images.xcassets in Resources */,
+				235EC8201A0FE7B900BB50DD /* SlidableMenuViewController.xib in Resources */,
+				235EC81B1A0FE51A00BB50DD /* MenuTableViewCell.xib in Resources */,
 				235D5B901A06B8CA00F7A698 /* favorite_on.png in Resources */,
 				235D5B7A1A0626AA00F7A698 /* FeedViewController.xib in Resources */,
+				235EC8161A0FE47A00BB50DD /* MenuViewController.xib in Resources */,
 				235D5B851A06311100F7A698 /* FeedTableViewCell.xib in Resources */,
 				235D5B871A069D8800F7A698 /* About_logoUsage.png in Resources */,
 				235D5B911A06B8CA00F7A698 /* favorite.png in Resources */,
 				235D5B961A06C9A700F7A698 /* TweetViewController.xib in Resources */,
 				235D5B8F1A06B8CA00F7A698 /* reply.png in Resources */,
+				235EC8261A1056E400BB50DD /* menu-20.png in Resources */,
 				235D5B8D1A06B8CA00F7A698 /* retweet_on.png in Resources */,
 				235D5B6A1A05BA9300F7A698 /* LoginViewController.xib in Resources */,
 				235D5B7F1A062E8E00F7A698 /* CreateTweetViewController.xib in Resources */,
@@ -393,7 +447,11 @@
 				235D5B791A0626AA00F7A698 /* FeedViewController.m in Sources */,
 				235D5B751A05CABE00F7A698 /* User.m in Sources */,
 				235D5B721A05CAB000F7A698 /* Tweet.m in Sources */,
+				235EC81F1A0FE7B900BB50DD /* SlidableMenuViewController.m in Sources */,
 				235264371A05B69A0093099A /* main.m in Sources */,
+				235EC8151A0FE47A00BB50DD /* MenuViewController.m in Sources */,
+				235EC81A1A0FE51A00BB50DD /* MenuTableViewCell.m in Sources */,
+				235EC82A1A10598900BB50DD /* ProfileHeaderTableViewCell.m in Sources */,
 				235D5B691A05BA9300F7A698 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
