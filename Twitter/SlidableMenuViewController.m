@@ -23,13 +23,13 @@
     if (self) {
         _menuViewController = mvc;
         _contentViewController = cvc;
-        
-        UIImage *image = [[UIImage imageNamed:@"menu-20.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        UIView *menuView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        [menuView addSubview:[[UIImageView alloc] initWithImage:image]];
-        
-        UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithCustomView:menuView];
-        _contentViewController.navigationItem.leftBarButtonItem = menuButton;
+
+        UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-20.png"]
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:nil
+                                                                    action:nil];
+        UINavigationController *nvc = (UINavigationController *)_contentViewController;
+        nvc.topViewController.navigationItem.leftBarButtonItem = menuItem;
     }
     return self;
 }

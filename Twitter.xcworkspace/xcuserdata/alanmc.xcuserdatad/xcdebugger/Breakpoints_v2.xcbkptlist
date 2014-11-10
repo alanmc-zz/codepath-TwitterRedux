@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Twitter/FeedViewController.m"
-            timestampString = "437298807.800163"
+            timestampString = "437299904.124249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>

@@ -173,8 +173,7 @@
                                                                            green:172.0f/255.0f
                                                                             blue:238.0f/255.0f
                                                                            alpha:50.0f/255.0f];
-    self.navigationController.navigationBar.translucent = YES;
-    
+
     UIBarButtonItem *createTweetButton = [[UIBarButtonItem alloc] initWithTitle:@"New"
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self

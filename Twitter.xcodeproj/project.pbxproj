@@ -37,13 +37,13 @@
 		235EC81B1A0FE51A00BB50DD /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8191A0FE51A00BB50DD /* MenuTableViewCell.xib */; };
 		235EC81F1A0FE7B900BB50DD /* SlidableMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235EC81D1A0FE7B900BB50DD /* SlidableMenuViewController.m */; };
 		235EC8201A0FE7B900BB50DD /* SlidableMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235EC81E1A0FE7B900BB50DD /* SlidableMenuViewController.xib */; };
-		235EC8241A10542200BB50DD /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8231A10542200BB50DD /* menu.png */; };
 		235EC8261A1056E400BB50DD /* menu-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8251A1056E400BB50DD /* menu-20.png */; };
 		235EC82A1A10598900BB50DD /* ProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235EC8281A10598900BB50DD /* ProfileHeaderTableViewCell.m */; };
 		235EC82B1A10598900BB50DD /* ProfileHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8291A10598900BB50DD /* ProfileHeaderTableViewCell.xib */; };
 		235EC82E1A109E5A00BB50DD /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC82C1A109E5A00BB50DD /* me.png */; };
 		235EC82F1A109E5A00BB50DD /* mention.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC82D1A109E5A00BB50DD /* mention.png */; };
 		235EC8311A109E6300BB50DD /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8301A109E6300BB50DD /* home.png */; };
+		235EC8331A10A96500BB50DD /* menu-20.svg in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8321A10A96500BB50DD /* menu-20.svg */; };
 		3D953C663927A3947E18997B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4011426B2ABDAA272437B208 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -107,7 +107,6 @@
 		235EC81D1A0FE7B900BB50DD /* SlidableMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidableMenuViewController.m; sourceTree = "<group>"; };
 		235EC81E1A0FE7B900BB50DD /* SlidableMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlidableMenuViewController.xib; sourceTree = "<group>"; };
 		235EC8221A10526D00BB50DD /* ViewTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewTypes.h; sourceTree = "<group>"; };
-		235EC8231A10542200BB50DD /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		235EC8251A1056E400BB50DD /* menu-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-20.png"; sourceTree = "<group>"; };
 		235EC8271A10598900BB50DD /* ProfileHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderTableViewCell.h; sourceTree = "<group>"; };
 		235EC8281A10598900BB50DD /* ProfileHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderTableViewCell.m; sourceTree = "<group>"; };
@@ -115,6 +114,7 @@
 		235EC82C1A109E5A00BB50DD /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = "<group>"; };
 		235EC82D1A109E5A00BB50DD /* mention.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mention.png; sourceTree = "<group>"; };
 		235EC8301A109E6300BB50DD /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		235EC8321A10A96500BB50DD /* menu-20.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "menu-20.svg"; sourceTree = "<group>"; };
 		4011426B2ABDAA272437B208 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -190,11 +190,11 @@
 		235264341A05B69A0093099A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				235EC8321A10A96500BB50DD /* menu-20.svg */,
 				235EC8301A109E6300BB50DD /* home.png */,
 				235EC82C1A109E5A00BB50DD /* me.png */,
 				235EC82D1A109E5A00BB50DD /* mention.png */,
 				235EC8251A1056E400BB50DD /* menu-20.png */,
-				235EC8231A10542200BB50DD /* menu.png */,
 				235D5B861A069D8800F7A698 /* About_logoUsage.png */,
 				235264351A05B69A0093099A /* Info.plist */,
 				235264361A05B69A0093099A /* main.m */,
@@ -382,11 +382,11 @@
 				235264451A05B69A0093099A /* LaunchScreen.xib in Resources */,
 				235D5B8E1A06B8CA00F7A698 /* retweet.png in Resources */,
 				235EC8311A109E6300BB50DD /* home.png in Resources */,
-				235EC8241A10542200BB50DD /* menu.png in Resources */,
 				235EC82B1A10598900BB50DD /* ProfileHeaderTableViewCell.xib in Resources */,
 				235264421A05B69A0093099A /* Images.xcassets in Resources */,
 				235EC8201A0FE7B900BB50DD /* SlidableMenuViewController.xib in Resources */,
 				235EC81B1A0FE51A00BB50DD /* MenuTableViewCell.xib in Resources */,
+				235EC8331A10A96500BB50DD /* menu-20.svg in Resources */,
 				235D5B901A06B8CA00F7A698 /* favorite_on.png in Resources */,
 				235D5B7A1A0626AA00F7A698 /* FeedViewController.xib in Resources */,
 				235EC8161A0FE47A00BB50DD /* MenuViewController.xib in Resources */,
