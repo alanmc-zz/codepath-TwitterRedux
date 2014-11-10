@@ -99,16 +99,13 @@ NSString * const kBaseURL = @"https://api.twitter.com/";
     if (lastId != 0) {
         [params setValue:[[NSNumber alloc] initWithInteger:lastId] forKey:@"max_id"];
     }
-    
+    [params setValue:[[NSNumber alloc] initWithInteger:userID] forKey:@"user_id"];
+
     [self GET:@"1.1/statuses/user_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
 
-        NSMutableDictionary *userParams = [NSMutableDictionary dictionary];
-        [userParams setValue:[[NSNumber alloc] initWithInteger:userID] forKey:@"user_id"];
-
-        [self GET:@"1.1/users/show.json" parameters:userParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self GET:@"1.1/users/show.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             User *user = [[User alloc] initWithDictionary:responseObject];
-            NSLog(@"%@", tweets);
             completion(user, tweets, nil);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             completion(nil, nil, error);

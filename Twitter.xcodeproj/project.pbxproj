@@ -41,6 +41,9 @@
 		235EC8261A1056E400BB50DD /* menu-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8251A1056E400BB50DD /* menu-20.png */; };
 		235EC82A1A10598900BB50DD /* ProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235EC8281A10598900BB50DD /* ProfileHeaderTableViewCell.m */; };
 		235EC82B1A10598900BB50DD /* ProfileHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8291A10598900BB50DD /* ProfileHeaderTableViewCell.xib */; };
+		235EC82E1A109E5A00BB50DD /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC82C1A109E5A00BB50DD /* me.png */; };
+		235EC82F1A109E5A00BB50DD /* mention.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC82D1A109E5A00BB50DD /* mention.png */; };
+		235EC8311A109E6300BB50DD /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 235EC8301A109E6300BB50DD /* home.png */; };
 		3D953C663927A3947E18997B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4011426B2ABDAA272437B208 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +112,9 @@
 		235EC8271A10598900BB50DD /* ProfileHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderTableViewCell.h; sourceTree = "<group>"; };
 		235EC8281A10598900BB50DD /* ProfileHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderTableViewCell.m; sourceTree = "<group>"; };
 		235EC8291A10598900BB50DD /* ProfileHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		235EC82C1A109E5A00BB50DD /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = "<group>"; };
+		235EC82D1A109E5A00BB50DD /* mention.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mention.png; sourceTree = "<group>"; };
+		235EC8301A109E6300BB50DD /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		4011426B2ABDAA272437B208 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -184,6 +190,9 @@
 		235264341A05B69A0093099A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				235EC8301A109E6300BB50DD /* home.png */,
+				235EC82C1A109E5A00BB50DD /* me.png */,
+				235EC82D1A109E5A00BB50DD /* mention.png */,
 				235EC8251A1056E400BB50DD /* menu-20.png */,
 				235EC8231A10542200BB50DD /* menu.png */,
 				235D5B861A069D8800F7A698 /* About_logoUsage.png */,
@@ -372,6 +381,7 @@
 			files = (
 				235264451A05B69A0093099A /* LaunchScreen.xib in Resources */,
 				235D5B8E1A06B8CA00F7A698 /* retweet.png in Resources */,
+				235EC8311A109E6300BB50DD /* home.png in Resources */,
 				235EC8241A10542200BB50DD /* menu.png in Resources */,
 				235EC82B1A10598900BB50DD /* ProfileHeaderTableViewCell.xib in Resources */,
 				235264421A05B69A0093099A /* Images.xcassets in Resources */,
@@ -385,6 +395,8 @@
 				235D5B911A06B8CA00F7A698 /* favorite.png in Resources */,
 				235D5B961A06C9A700F7A698 /* TweetViewController.xib in Resources */,
 				235D5B8F1A06B8CA00F7A698 /* reply.png in Resources */,
+				235EC82F1A109E5A00BB50DD /* mention.png in Resources */,
+				235EC82E1A109E5A00BB50DD /* me.png in Resources */,
 				235EC8261A1056E400BB50DD /* menu-20.png in Resources */,
 				235D5B8D1A06B8CA00F7A698 /* retweet_on.png in Resources */,
 				235D5B6A1A05BA9300F7A698 /* LoginViewController.xib in Resources */,

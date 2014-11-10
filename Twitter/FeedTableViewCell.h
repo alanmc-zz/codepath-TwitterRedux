@@ -12,6 +12,7 @@
 @protocol FeedTableViewCellDelegate <NSObject>
 
 - (void)onReply:(Tweet *)tweet;
+- (void)onProfileSelect:(User *)user;
 
 @end
 

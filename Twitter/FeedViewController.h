@@ -14,9 +14,8 @@
 
 @interface FeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CreateTweetViewControllerDelegate, FeedTableViewCellDelegate, SlidableMenuViewContentControllerDelegate>
 
-@property (assign, nonatomic) TwitterViewType currentView;
-@property (strong, nonatomic) User* profileUser;
-
 - (void)didSelectMenuItem:(NSInteger)selectedItem;
+- (void)onReply:(Tweet *)tweet;
+- (void)onProfileSelect:(User *)user;
 
 @end

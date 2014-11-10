@@ -27,11 +27,6 @@
 
         self.isRetweet = [dictionary[@"retweeted"] boolValue];
         self.isFavorite = [dictionary[@"favorited"] boolValue];
-        
-        if (self.isRetweet) {
-            NSLog(@"%@", dictionary);
-        }
-
     }
     return self;
 }

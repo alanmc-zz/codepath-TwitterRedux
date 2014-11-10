@@ -10,6 +10,7 @@
 #import "MenuTableViewCell.h"
 #import "ViewTypes.h"
 #import "User.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface MenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -30,7 +31,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.rowHeight = 96;
 
     [self.tableView registerNib:[UINib nibWithNibName:@"MenuTableViewCell" bundle:nil] forCellReuseIdentifier:@"MenuTableViewCell"];
 }
@@ -49,12 +50,15 @@
     switch (indexPath.row) {
         case TwitterViewTypeHomeTimeline:
             cell.menuItemLabel.text = @"Home Timeline";
+            [cell.imageView initWithImage:[UIImage imageNamed:@"home.png"]];
             break;
         case TwitterViewTypeProfile:
             cell.menuItemLabel.text = @"Profile";
+            [cell.imageView initWithImage:[UIImage imageNamed:@"me.png"]];
             break;
         case TwitterViewTypeMentions:
             cell.menuItemLabel.text = @"Mentions";
+            [cell.imageView initWithImage:[UIImage imageNamed:@"mention.png"]];
             break;
         default:
             cell.menuItemLabel.text = @"Sign Out";

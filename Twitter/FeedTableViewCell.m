@@ -75,8 +75,15 @@
 - (void)awakeFromNib {
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     self.tweetLabel.preferredMaxLayoutWidth = self.tweetLabel.frame.size.width;
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onProfileTap)];
+    [self.profileImageView addGestureRecognizer:tapGestureRecognizer];
 }
 
+- (void)onProfileTap {
+    [self.delegate onProfileSelect:self.tweet.createdBy];
+}
+          
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.tweetLabel.preferredMaxLayoutWidth = self.tweetLabel.frame.size.width;

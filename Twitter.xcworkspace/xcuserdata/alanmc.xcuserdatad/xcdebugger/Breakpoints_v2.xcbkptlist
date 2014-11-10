@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Twitter/FeedViewController.m"
-            timestampString = "437294741.516161"
+            timestampString = "437298807.800163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,12 +52,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Twitter/FeedViewController.m"
-            timestampString = "437294625.262847"
+            timestampString = "437298714.677908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-loadTweetsWithTableView:startFrom:clearTweets:"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-loadTweetsWithTableView:startFrom:clearTweets:profileID:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

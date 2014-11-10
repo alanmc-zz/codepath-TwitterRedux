@@ -21,6 +21,9 @@
 @property (strong, atomic) FeedTableViewCell *currentCell;
 @property (strong, atomic) ProfileHeaderTableViewCell *profileCell;
 
+@property (assign, nonatomic) TwitterViewType currentView;
+@property (strong, nonatomic) User* profileUser;
+
 @property (strong, atomic) NSMutableArray* tweets;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
@@ -28,11 +31,15 @@
 
 @implementation FeedViewController
 
-- (void)didSelectMenuItem:(NSInteger)selectedItem {
-    [self updateView:selectedItem];
+- (void)onProfileSelect:(User *)user {
+    [self updateView:TwitterViewTypeProfile withProfileID:user.userID];
 }
 
-- (void)updateView:(TwitterViewType)viewType {
+- (void)didSelectMenuItem:(NSInteger)selectedItem {
+    [self updateView:selectedItem withProfileID:[User currentUser].userID];
+}
+
+- (void)updateView:(TwitterViewType)viewType withProfileID:(NSInteger)profileID {
     self.currentView = viewType;
     switch (self.currentView) {
         case TwitterViewTypeHomeTimeline:
@@ -51,10 +58,17 @@
             break;
         }
     }
-    [self loadTweetsWithTableView:self.tableView startFrom:0 clearTweets:YES];
+    [self loadTweetsWithTableView:self.tableView
+                        startFrom:0
+                      clearTweets:YES
+                        profileID:profileID];
 }
 
-- (void)loadTweetsWithTableView:(UITableView *)tableView startFrom:(NSInteger)fromId clearTweets:(BOOL)clearTweets {
+- (void)loadTweetsWithTableView:(UITableView *)tableView
+                      startFrom:(NSInteger)fromId
+                    clearTweets:(BOOL)clearTweets
+                      profileID:(NSInteger)profileID
+{
     [SVProgressHUD show];
 
     switch (self.currentView) {
@@ -92,7 +106,7 @@
         }
         case TwitterViewTypeProfile:
         {
-            [[TwitterClient sharedInstance] profile:[User currentUser].userID withLastId:fromId completion:^(User *user, NSArray *tweets, NSError *error) {
+            [[TwitterClient sharedInstance] profile:profileID withLastId:fromId completion:^(User *user, NSArray *tweets, NSError *error) {
                 [SVProgressHUD dismiss];
                 if (error != nil) {
                     NSLog(@"%@", error);
@@ -100,6 +114,7 @@
                     if (clearTweets) {
                         self.tweets = [NSMutableArray array];
                     }
+                    self.profileUser = user;
                     [self.tweets addObjectsFromArray:tweets];
                     [self.tableView reloadData];
                 }
@@ -111,7 +126,10 @@
 
 - (void)refresh
 {
-    [self loadTweetsWithTableView:self.tableView startFrom:0 clearTweets:YES];
+    [self loadTweetsWithTableView:self.tableView
+                        startFrom:0
+                      clearTweets:YES
+                        profileID:[User currentUser].userID];
     [self.refreshControl endRefreshing];
 }
 
@@ -163,7 +181,7 @@
                                                                     action:@selector(onNewTweet)];
     self.navigationItem.rightBarButtonItem = createTweetButton;
     
-    [self updateView:TwitterViewTypeHomeTimeline];
+    [self updateView:TwitterViewTypeHomeTimeline withProfileID:[User currentUser].userID];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -183,7 +201,10 @@
             Tweet *lastTweet = self.tweets.lastObject;
             lastId = lastTweet.tweetId;
         }
-        [self loadTweetsWithTableView:self.tableView startFrom:lastId clearTweets:NO];
+        [self loadTweetsWithTableView:self.tableView
+                            startFrom:lastId
+                          clearTweets:NO
+                            profileID:[User currentUser].userID];
     }
     if (self.currentView == TwitterViewTypeProfile && indexPath.row == 0) {
         _profileCell = [self.tableView dequeueReusableCellWithIdentifier:@"ProfileHeaderTableViewCell"];
@@ -200,7 +221,7 @@
     self.currentCell.delegate = self;
     if (self.currentView == TwitterViewTypeProfile) {
         if (indexPath.row == 0) {
-            self.profileCell.user = [User currentUser];
+            self.profileCell.user = self.profileUser;
             size = [self.profileCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         } else {
             self.currentCell.tweet = self.tweets[indexPath.row - 1];
